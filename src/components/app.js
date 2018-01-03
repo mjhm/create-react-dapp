@@ -1,21 +1,31 @@
+// @flow
+
 import React from 'react';
 import { Container } from 'reactstrap';
 import VotingTable from './voting_table';
 
+type EthInterface = {
+  candidateList: Array<string>,
+  voteForCandidate: (name: string) => Promise<any>,
+  fetchCandidateVotes: () => Promise<any>,
+};
+
 class App extends React.Component {
-  constructor(props) {
+  state: { votes: any };
+  eth: EthInterface;
+
+  constructor(props: EthInterface) {
     super(props);
     this.state = { votes: null };
-    this.eth = props.eth;
   }
 
-  async componentDidMount() {
-    const votes = await this.eth.fetchCandidateVotes();
+  async componentDidMount(): any {
+    const votes = await this.props.eth.fetchCandidateVotes();
     this.setState({ votes });
   }
 
-  voteHandler = name => async () => {
-    const votes = await this.eth.voteForCandidate(name);
+  voteHandler = (name: string) => async () => {
+    const votes = await this.props.eth.voteForCandidate(name);
     this.setState({ votes });
   };
 
@@ -25,7 +35,7 @@ class App extends React.Component {
         <h1>Simple React Voting Application</h1>
         {this.state.votes ? (
           <VotingTable
-            candidateList={this.eth.candidateList}
+            candidateList={this.props.eth.candidateList}
             votes={this.state.votes}
             voteHandler={this.voteHandler}
           />

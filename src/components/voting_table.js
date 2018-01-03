@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import { Table, Button } from 'reactstrap';
 
@@ -15,7 +17,7 @@ const CandidateRow = ({ name, votes, onClick }) => (
 type votingTableProps = {
   candidateList: Array<string>,
   votes: { [name: string]: number },
-  voteHandler: (name: string) => any,
+  voteHandler: (name: string) => () => any,
 };
 
 const VotingTable = (props: votingTableProps) => (
