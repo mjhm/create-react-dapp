@@ -7,13 +7,12 @@ if (!fs.existsSync(deployFolder)) {
   fs.mkdirSync(deployFolder);
 }
 
-const provider = new Web3.providers.HttpProvider('http://localhost:8545');
-const web3 = new Web3(provider);
 const asciiToHex = Web3.utils.asciiToHex;
 
 const candidates = ['Rama', 'Nick', 'Jose'];
 
-web3.eth.getAccounts().then(async accounts => {
+const deploy = async (provider, account) => {
+  const web3 = new Web3(provider);
   const code = fs.readFileSync(`${__dirname}/voting.sol`).toString();
   const compiledCode = solc.compile(code);
   const errors = [];
@@ -41,7 +40,7 @@ web3.eth.getAccounts().then(async accounts => {
 
   const VotingContract = new web3.eth.Contract(abiDefinition, {
     data: byteCode,
-    from: accounts[0],
+    from: account,
     gas: 4700000,
   });
 
@@ -61,4 +60,6 @@ web3.eth.getAccounts().then(async accounts => {
     .totalVotesFor(asciiToHex('Rama'))
     .call();
   console.info('votesRama', votesRama);
-});
+};
+
+module.exports = deploy;
