@@ -28,7 +28,9 @@
     "deploy": "node src/contract/dev_deploy.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test_components": "react-scripts test --env=jsdom src/components",
+    "test_contract": "react-scripts test --env=node src/contract",
+    "test": "CI=true yarn run test_components && CI=true yarn run test_contract",
     "eject": "react-scripts eject"
   }
 }

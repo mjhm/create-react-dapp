@@ -1,7 +1,13 @@
+const fs = require('fs');
 const ganache = require('ganache-cli');
+const _ = require('lodash');
 const Web3 = require('web3');
 const deploy = require('./deploy');
-const _ = require('lodash');
+
+const deployFolder = `${__dirname}/../../public/deploy`;
+if (!fs.existsSync(deployFolder)) {
+  fs.mkdirSync(deployFolder);
+}
 
 const port = 8545;
 const provider = new Web3.providers.HttpProvider(`http://localhost:${port}`);
@@ -22,5 +28,15 @@ server.listen(port, null, async err => {
   }
 
   console.info(`ganache server listening on ${port}`);
-  await deploy(provider, accounts[0]);
+  const deployedContract = await deploy(provider, accounts[0]);
+  fs.writeFileSync(
+    `${deployFolder}/abi_definition.js`,
+    `ABI_DEFINITION = ${JSON.stringify(
+      deployedContract.options.jsonInterface,
+    )}`,
+  );
+  fs.writeFileSync(
+    `${deployFolder}/contract_address.js`,
+    `CONTRACT_ADDRESS = '${deployedContract.options.address}';`,
+  );
 });

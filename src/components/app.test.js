@@ -22,9 +22,11 @@ class MockEthInterface {
   }
 }
 
-it('renders without crashing', async () => {
-  const div = document.createElement('div');
+describe('app.js', () => {
+  test('render without crashing', async () => {
+    const div = document.createElement('div');
 
-  ReactDOM.render(<App eth={new MockEthInterface()} />, div);
-  return Promise.delay(10);
+    ReactDOM.render(<App eth={new MockEthInterface()} />, div);
+    return Promise.delay(10);
+  });
 });
