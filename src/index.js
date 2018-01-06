@@ -1,8 +1,8 @@
 /* eslint-env browser */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/app';
-import registerServiceWorker from './registerServiceWorker';
+import App from './components/App';
+import registerServiceWorker from './RegisterServiceWorker';
 import 'bootstrap/dist/css/bootstrap.css';
 import EthInterface from './helpers/eth_interface';
 

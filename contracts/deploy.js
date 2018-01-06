@@ -8,7 +8,7 @@ const candidates = ['Rama', 'Nick', 'Jose'];
 
 const deploy = async (provider, account) => {
   const web3 = new Web3(provider);
-  const code = fs.readFileSync(`${__dirname}/voting.sol`).toString();
+  const code = fs.readFileSync(`${__dirname}/Voting.sol`).toString();
   const compiledCode = solc.compile(code);
   const errors = [];
   const warnings = [];

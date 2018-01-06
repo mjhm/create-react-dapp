@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Container } from 'reactstrap';
-import VotingTable from './voting_table';
+import VotingTable from './VotingTable';
 
 type EthInterface = {
   candidateList: Array<string>,
