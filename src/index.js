@@ -4,10 +4,6 @@ import ReactDOM from 'react-dom';
 import App from './components/App';
 import registerServiceWorker from './RegisterServiceWorker';
 import 'bootstrap/dist/css/bootstrap.css';
-import EthInterface from './helpers/eth_interface';
 
-ReactDOM.render(
-  <App eth={new EthInterface()} />,
-  document.getElementById('root'),
-);
+ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();
