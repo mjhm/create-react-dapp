@@ -1,9 +1,14 @@
 /* eslint-env browser */
+/* global process */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
 import registerServiceWorker from './RegisterServiceWorker';
 import 'bootstrap/dist/css/bootstrap.css';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const env = {
+  network: process.env.REACT_APP_ETH_NETWORK || 5777,
+  from: process.env.REACT_APP_FROM || null,
+};
+ReactDOM.render(<App {...env} />, document.getElementById('root'));
 registerServiceWorker();

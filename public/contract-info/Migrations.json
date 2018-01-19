@@ -1,80 +1,166 @@
 {
-  "contractName": "Migrations",
-  "abi": [
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "new_address",
-          "type": "address"
-        }
-      ],
-      "name": "upgrade",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
+  "4447": {
+    "events": {},
+    "links": {},
+    "address": "0x8cdaf0cd259887258bc13a92c0a6da92698644c0",
+    "networkName": "develop",
+    "networkLocation": {
+      "network_id": 4447,
+      "from": "0x627306090abab3a6e1400e9345bc60c78a8bef57"
     },
-    {
-      "constant": true,
-      "inputs": [],
-      "name": "last_completed_migration",
-      "outputs": [
-        {
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
+    "contractName": "Migrations",
+    "abi": [
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "new_address",
+            "type": "address"
+          }
+        ],
+        "name": "upgrade",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [],
+        "name": "last_completed_migration",
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [],
+        "name": "owner",
+        "outputs": [
+          {
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "completed",
+            "type": "uint256"
+          }
+        ],
+        "name": "setCompleted",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+      }
+    ],
+    "compiler": {
+      "name": "solc",
+      "version": "0.4.18+commit.9cf6e910.Emscripten.clang"
     },
-    {
-      "constant": true,
-      "inputs": [],
-      "name": "owner",
-      "outputs": [
-        {
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "completed",
-          "type": "uint256"
-        }
-      ],
-      "name": "setCompleted",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "constructor"
-    }
-  ],
-  "compiler": {
-    "name": "solc",
-    "version": "0.4.18+commit.9cf6e910.Emscripten.clang"
+    "schemaVersion": "1.0.1",
+    "updatedAt": "2018-01-18T23:54:19.032Z"
   },
-  "networks": {
-    "5777": {
-      "events": {},
-      "links": {},
-      "address": "0x30753e4a8aad7f8597332e813735def5dd395028"
-    }
-  },
-  "schemaVersion": "1.0.1",
-  "updatedAt": "2018-01-14T15:16:04.220Z"
+  "5777": {
+    "events": {},
+    "links": {},
+    "address": "0x8cdaf0cd259887258bc13a92c0a6da92698644c0",
+    "networkName": "development",
+    "networkLocation": {
+      "host": "localhost",
+      "port": 7545,
+      "network_id": "5777",
+      "from": "0x627306090abab3a6e1400e9345bc60c78a8bef57"
+    },
+    "contractName": "Migrations",
+    "abi": [
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "new_address",
+            "type": "address"
+          }
+        ],
+        "name": "upgrade",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [],
+        "name": "last_completed_migration",
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [],
+        "name": "owner",
+        "outputs": [
+          {
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "completed",
+            "type": "uint256"
+          }
+        ],
+        "name": "setCompleted",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+      }
+    ],
+    "compiler": {
+      "name": "solc",
+      "version": "0.4.18+commit.9cf6e910.Emscripten.clang"
+    },
+    "schemaVersion": "1.0.1",
+    "updatedAt": "2018-01-18T23:59:38.668Z"
+  }
 }

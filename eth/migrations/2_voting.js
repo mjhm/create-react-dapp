@@ -6,7 +6,6 @@ const asciiToHex = Web3.utils.asciiToHex;
 const candidates = ['Rama', 'Nick', 'Jose'];
 
 module.exports = async deployer => {
-  // deployment steps
   await deployer.deploy(Voting, candidates.map(asciiToHex));
-  deployInfo(Voting);
+  deployInfo(deployer, Voting);
 };

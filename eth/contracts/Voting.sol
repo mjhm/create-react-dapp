@@ -23,12 +23,13 @@ contract Voting {
     candidateList = candidateNames;
   }
 
-  event Here();
+  function getCandidateList() public view returns (bytes32[]) {
+    return candidateList;
+  }
 
   // This function returns the total votes a candidate has received so far
   function totalVotesFor(bytes32 candidate) public view returns (uint8) {
     require(validCandidate(candidate));
-    Here();
     return votesReceived[candidate];
   }
 
@@ -40,9 +41,7 @@ contract Voting {
   }
 
   function validCandidate(bytes32 candidate) public view returns (bool) {
-    log0(candidate);
     for(uint i = 0; i < candidateList.length; i++) {
-      log2(bytes32(i), bytes32(candidateList[i]), bytes32(candidate));
       if (candidateList[i] == candidate) {
         return true;
       }

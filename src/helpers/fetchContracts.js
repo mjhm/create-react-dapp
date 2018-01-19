@@ -1,22 +1,27 @@
 import Promise from 'bluebird';
+import getWeb3 from './getWeb3';
 
-const fetchContracts = async (web3, contractNames) => {
+const fetchContracts = async (network, contractNames) => {
   const contracts = {};
+  let localWeb3 = null;
+  let from = null;
   await Promise.map(contractNames, async name => {
     const contractInfo = await (await fetch(
       `contract-info/${name}.json`,
     )).json();
-    console.log('web3', web3);
-
-    const contract = new web3.eth.Contract(
-      contractInfo.abi,
-      // '0x627306090abaB3A6e1400e9345bC60c78a8BEf57',
-      contractInfo.networks['5777'].address,
+    if (!localWeb3) {
+      const { networkLocation } = contractInfo[network];
+      from = networkLocation.from;
+      localWeb3 = await getWeb3(networkLocation);
+    }
+    const contract = new localWeb3.eth.Contract(
+      contractInfo[network].abi,
+      contractInfo[network].address,
     );
     contracts[name] = contract;
-    return contract;
+    return contractInfo;
   });
-  return contracts;
+  return { from, contracts };
 };
 
 export default fetchContracts;
