@@ -12,7 +12,7 @@ class App extends React.Component {
     poll: any,
   };
 
-  constructor(props: { network: string, from: string }) {
+  constructor(props: { network: string }) {
     super(props);
     this.state = {
       votes: null,
@@ -21,10 +21,8 @@ class App extends React.Component {
   }
 
   async componentDidMount(): any {
-    const { from, contracts } = await fetchContracts(this.props.network, [
-      'Voting',
-    ]);
-    const poll = new Voting(this.props.from || from, contracts.Voting);
+    const { contracts } = await fetchContracts(this.props.network, ['Voting']);
+    const poll = new Voting(contracts.Voting);
     await poll.initCandidateList();
     const votes = await poll.fetchCandidateVotes();
     this.setState({

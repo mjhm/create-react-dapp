@@ -1,4 +1,138 @@
 {
+  "4": {
+    "events": {},
+    "links": {},
+    "address": "0x9dde9db3e52087348da24a1ba54eb693ed7d9570",
+    "networkName": "rinkeby",
+    "networkLocation": {
+      "network_id": 4,
+      "from": "0xa4e760ec08553ba178eb13b5261c54372315c60e"
+    },
+    "contractName": "Voting",
+    "abi": [
+      {
+        "constant": true,
+        "inputs": [
+          {
+            "name": "candidate",
+            "type": "bytes32"
+          }
+        ],
+        "name": "totalVotesFor",
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint8"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [
+          {
+            "name": "candidate",
+            "type": "bytes32"
+          }
+        ],
+        "name": "validCandidate",
+        "outputs": [
+          {
+            "name": "",
+            "type": "bool"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [
+          {
+            "name": "",
+            "type": "bytes32"
+          }
+        ],
+        "name": "votesReceived",
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint8"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [
+          {
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "name": "candidateList",
+        "outputs": [
+          {
+            "name": "",
+            "type": "bytes32"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "candidate",
+            "type": "bytes32"
+          }
+        ],
+        "name": "voteForCandidate",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [],
+        "name": "getCandidateList",
+        "outputs": [
+          {
+            "name": "",
+            "type": "bytes32[]"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "name": "candidateNames",
+            "type": "bytes32[]"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+      }
+    ],
+    "compiler": {
+      "name": "solc",
+      "version": "0.4.18+commit.9cf6e910.Emscripten.clang"
+    },
+    "schemaVersion": "1.0.1",
+    "updatedAt": "2018-01-19T20:54:23.652Z"
+  },
   "4447": {
     "events": {},
     "links": {},
@@ -266,12 +400,6 @@
         "payable": false,
         "stateMutability": "nonpayable",
         "type": "constructor"
-      },
-      {
-        "anonymous": false,
-        "inputs": [],
-        "name": "Here",
-        "type": "event"
       }
     ],
     "compiler": {
@@ -279,6 +407,6 @@
       "version": "0.4.18+commit.9cf6e910.Emscripten.clang"
     },
     "schemaVersion": "1.0.1",
-    "updatedAt": "2018-01-18T23:59:38.667Z"
+    "updatedAt": "2018-01-19T20:12:06.069Z"
   }
 }

@@ -8,7 +8,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 const env = {
   network: process.env.REACT_APP_ETH_NETWORK || 5777,
-  from: process.env.REACT_APP_FROM || null,
 };
 ReactDOM.render(<App {...env} />, document.getElementById('root'));
 registerServiceWorker();

@@ -2,30 +2,66 @@ import Promise from 'bluebird';
 import Web3 from 'web3';
 import _ from 'lodash';
 
-const { asciiToHex, hexToAscii } = Web3.utils;
+const { asciiToHex, hexToAscii } =
+  // web3 1.X
+  Web3.utils || {
+    // web3 0.20.X
+    asciiToHex: Web3.prototype.fromAscii,
+    hexToAscii: Web3.prototype.toAscii,
+  };
+
+const convertMethodToNewWeb3Pattern = method => {
+  // Converter to allow web3 0.20.x methods to be called like 1.x methods.
+  // this isn't a general purpose converter, but works for our methods.
+  return (...args) => {
+    return {
+      call: options => Promise.promisify(method)(...args, options),
+      send: options => Promise.promisify(method)(...args, options),
+    };
+  };
+};
 
 export default class Voting {
-  constructor(account, contract) {
+  constructor(contract) {
     this.contract = contract;
-    this.account = account;
+    this.methods =
+      // web3 1.x
+      this.contract.methods ||
+      // web3 0.20.x
+      _.mapValues(
+        {
+          getCandidateList: this.contract.getCandidateList,
+          voteForCandidate: this.contract.voteForCandidate,
+          totalVotesFor: this.contract.totalVotesFor,
+        },
+        convertMethodToNewWeb3Pattern,
+      );
   }
 
   async initCandidateList() {
-    const candidates = await this.contract.methods.getCandidateList().call();
-    return (this.candidateList = candidates.map(hexToAscii));
+    return new Promise((resolve, reject) => {
+      this.contract.getCandidateList.call((err, list) => {
+        console.log('err', err);
+        console.log('list', list);
+        resolve((this.candidateList = list.map(hexToAscii)));
+      });
+    });
+    // const candidates = await this.methods.getCandidateList().call();
+    // const candidates = await this.methods.getCandidateList().call();
+    // console.log('candidates', candidates);
+    // return (this.candidateList = candidates.map(hexToAscii));
   }
 
   async voteForCandidate(name) {
-    await this.contract.methods
-      .voteForCandidate(asciiToHex(name))
-      .send({ from: this.account, gas: 100000 });
+    await this.methods.voteForCandidate(asciiToHex(name)).send({ gas: 100000 });
     return this.fetchCandidateVotes();
   }
 
   async fetchCandidateVotes() {
     const votes = await Promise.map(this.candidateList, name => {
-      return this.contract.methods.totalVotesFor(asciiToHex(name)).call();
+      return this.methods.totalVotesFor(asciiToHex(name)).call();
     });
-    return _.zipObject(this.candidateList, votes);
+    // .toString() is needed to convert from BigNumbers in web3 0.20.x
+    return _.zipObject(this.candidateList, votes.map(v => v.toString()));
   }
 }
