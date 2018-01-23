@@ -1,6 +1,8 @@
 pragma solidity ^0.4.17;
 
-contract Migrations {
+import "../lib/mortal.sol";
+
+contract Migrations is mortal {
   address public owner;
   uint public last_completed_migration;
 

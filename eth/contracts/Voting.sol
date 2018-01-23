@@ -1,7 +1,9 @@
 pragma solidity ^0.4.11;
 // We have to specify what version of compiler this code will compile with
 
-contract Voting {
+import "../lib/mortal.sol";
+
+contract Voting is mortal {
   /* mapping field below is equivalent to an associative array or hash.
   The key of the mapping is candidate name stored as type bytes32 and value is
   an unsigned integer to store the vote count

@@ -8,6 +8,7 @@ import Voting from '../helpers/Voting';
 
 class App extends React.Component {
   state: {
+    votePending: boolean,
     votes: any,
     poll: any,
   };
@@ -15,6 +16,7 @@ class App extends React.Component {
   constructor(props: { network: string }) {
     super(props);
     this.state = {
+      votePending: false,
       votes: null,
       poll: null,
     };
@@ -32,8 +34,9 @@ class App extends React.Component {
   }
 
   voteHandler = (name: string) => async () => {
+    this.setState({ votePending: true });
     const votes = await this.state.poll.voteForCandidate(name);
-    this.setState({ votes });
+    this.setState({ votes, votePending: false });
   };
 
   render() {
@@ -45,6 +48,7 @@ class App extends React.Component {
             candidateList={this.state.poll.candidateList}
             votes={this.state.votes}
             voteHandler={this.voteHandler}
+            votePending={this.state.votePending}
           />
         ) : null}
       </Container>

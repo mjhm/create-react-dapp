@@ -10,56 +10,74 @@ const { asciiToHex, hexToAscii } =
     hexToAscii: Web3.prototype.toAscii,
   };
 
-const convertMethodToNewWeb3Pattern = method => {
-  // Converter to allow web3 0.20.x methods to be called like 1.x methods.
-  // this isn't a general purpose converter, but works for our methods.
-  return (...args) => {
-    return {
-      call: options => Promise.promisify(method)(...args, options),
-      send: options => Promise.promisify(method)(...args, options),
-    };
-  };
-};
-
 export default class Voting {
   constructor(contract) {
     this.contract = contract;
-    this.methods =
-      // web3 1.x
-      this.contract.methods ||
-      // web3 0.20.x
-      _.mapValues(
-        {
-          getCandidateList: this.contract.getCandidateList,
-          voteForCandidate: this.contract.voteForCandidate,
-          totalVotesFor: this.contract.totalVotesFor,
-        },
-        convertMethodToNewWeb3Pattern,
-      );
+
+    const getCandidateList = Promise.promisify(
+      this.contract.getCandidateList.call,
+      { context: this.contract.getCandidateList },
+    );
+    const totalVotesFor = Promise.promisify(this.contract.totalVotesFor.call, {
+      context: this.contract.totalVotesFor,
+    });
+    const voteForCandidate = Promise.promisify(
+      this.contract.voteForCandidate.sendTransaction,
+      { context: this.contract.voteForCandidate },
+    );
+    const getTransaction = Promise.promisify(
+      this.contract._eth.getTransaction,
+      { context: this.contract._eth },
+    );
+
+    this.methods = {
+      getCandidateList,
+      totalVotesFor,
+      voteForCandidate,
+      getTransaction,
+    };
+  }
+
+  async waitForBlock(tx) {
+    let elapsed = 0;
+    let delay = 1000;
+    while (elapsed < 10 * 60 * 1000) {
+      let txObject = await this.methods.getTransaction(tx);
+      if (txObject && txObject.blockNumber) {
+        return txObject;
+      } else {
+        await Promise.delay(delay);
+        elapsed = elapsed + delay;
+        delay = Math.floor(1.5 * delay);
+      }
+    }
+    throw new Error('Timed out waiting for votes to be recorded in a block.');
   }
 
   async initCandidateList() {
-    return new Promise((resolve, reject) => {
-      this.contract.getCandidateList.call((err, list) => {
-        console.log('err', err);
-        console.log('list', list);
-        resolve((this.candidateList = list.map(hexToAscii)));
-      });
-    });
-    // const candidates = await this.methods.getCandidateList().call();
-    // const candidates = await this.methods.getCandidateList().call();
-    // console.log('candidates', candidates);
-    // return (this.candidateList = candidates.map(hexToAscii));
+    const hexCandidateList = await this.methods.getCandidateList();
+    return (this.candidateList = hexCandidateList.map(hexToAscii));
   }
 
   async voteForCandidate(name) {
-    await this.methods.voteForCandidate(asciiToHex(name)).send({ gas: 100000 });
-    return this.fetchCandidateVotes();
+    try {
+      const tx = await this.methods.voteForCandidate(asciiToHex(name), {
+        gas: 100000,
+        gasPrice: 3000000000,
+      });
+      console.log('tx', tx);
+      await this.waitForBlock(tx);
+    } catch (err) {
+      if (!err.message.match(/User denied transaction signature/)) {
+        throw err;
+      }
+    }
+    return await this.fetchCandidateVotes();
   }
 
   async fetchCandidateVotes() {
     const votes = await Promise.map(this.candidateList, name => {
-      return this.methods.totalVotesFor(asciiToHex(name)).call();
+      return this.methods.totalVotesFor(asciiToHex(name));
     });
     // .toString() is needed to convert from BigNumbers in web3 0.20.x
     return _.zipObject(this.candidateList, votes.map(v => v.toString()));

@@ -1,12 +1,12 @@
 // @flow
 
 import React from 'react';
-import { Table, Button } from 'reactstrap';
+import { Table, Button, Progress } from 'reactstrap';
 
-const CandidateRow = ({ name, votes, onClick }) => (
+const CandidateRow = ({ name, votes, votePending, onClick }) => (
   <tr>
     <td>
-      <Button color="primary" onClick={onClick}>
+      <Button color="primary" disabled={votePending} onClick={onClick}>
         {name}
       </Button>
     </td>
@@ -18,6 +18,7 @@ type votingTableProps = {
   candidateList: Array<string>,
   votes: { [name: string]: number },
   voteHandler: (name: string) => () => any,
+  votePending: boolean,
 };
 
 const VotingTable = (props: votingTableProps) => (
@@ -27,6 +28,19 @@ const VotingTable = (props: votingTableProps) => (
         <th>Vote For:</th>
         <th>Votes</th>
       </tr>
+      <tr>
+        <th colSpan="2" style={{ padding: 0, fontSize: '.75rem' }}>
+          {props.votePending ? (
+            <Progress animated value="100" color="warning">
+              Vote Pending
+            </Progress>
+          ) : (
+            <Progress bar value="100" color="success">
+              Votes Recorded
+            </Progress>
+          )}
+        </th>
+      </tr>
     </thead>
     <tbody>
       {props.candidateList.map(name => (
@@ -34,6 +48,7 @@ const VotingTable = (props: votingTableProps) => (
           key={name}
           name={name}
           votes={props.votes[name]}
+          votePending={props.votePending}
           onClick={props.voteHandler(name)}
         />
       ))}

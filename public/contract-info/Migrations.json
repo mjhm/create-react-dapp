@@ -1,11 +1,13 @@
 {
-  "4": {
+  "1": {
     "events": {},
     "links": {},
-    "address": "0x8fe6df02ccd8f8467397b10209667d49dc0fb4e1",
-    "networkName": "rinkeby",
+    "address": "0xb8750807aa90ce2139607f081c4bc9f8d72c4da1",
+    "networkName": "live",
     "networkLocation": {
-      "network_id": 4,
+      "network_id": 1,
+      "gas": 800002,
+      "gasPrice": 50000000000,
       "from": "0xa4e760ec08553ba178eb13b5261c54372315c60e"
     },
     "contractName": "Migrations",
@@ -19,6 +21,15 @@
           }
         ],
         "name": "upgrade",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [],
+        "name": "kill",
         "outputs": [],
         "payable": false,
         "stateMutability": "nonpayable",
@@ -78,7 +89,97 @@
       "version": "0.4.18+commit.9cf6e910.Emscripten.clang"
     },
     "schemaVersion": "1.0.1",
-    "updatedAt": "2018-01-19T20:54:23.653Z"
+    "updatedAt": "2018-01-23T07:35:18.829Z"
+  },
+  "4": {
+    "events": {},
+    "links": {},
+    "address": "0x2186ddc8284025f3758f16c1ce029d6b65e6f822",
+    "networkName": "rinkeby",
+    "networkLocation": {
+      "network_id": 4,
+      "from": "0xa4e760ec08553ba178eb13b5261c54372315c60e"
+    },
+    "contractName": "Migrations",
+    "abi": [
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "new_address",
+            "type": "address"
+          }
+        ],
+        "name": "upgrade",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [],
+        "name": "kill",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [],
+        "name": "last_completed_migration",
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [],
+        "name": "owner",
+        "outputs": [
+          {
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "completed",
+            "type": "uint256"
+          }
+        ],
+        "name": "setCompleted",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+      }
+    ],
+    "compiler": {
+      "name": "solc",
+      "version": "0.4.18+commit.9cf6e910.Emscripten.clang"
+    },
+    "schemaVersion": "1.0.1",
+    "updatedAt": "2018-01-23T21:29:58.613Z"
   },
   "4447": {
     "events": {},
@@ -164,10 +265,10 @@
   "5777": {
     "events": {},
     "links": {},
-    "address": "0x8cdaf0cd259887258bc13a92c0a6da92698644c0",
+    "address": "0x8f0483125fcb9aaaefa9209d8e9d7b9c8b9fb90f",
     "networkName": "development",
     "networkLocation": {
-      "host": "localhost",
+      "host": "127.0.0.1",
       "port": 7545,
       "network_id": "5777",
       "from": "0x627306090abab3a6e1400e9345bc60c78a8bef57"
@@ -183,6 +284,15 @@
           }
         ],
         "name": "upgrade",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [],
+        "name": "kill",
         "outputs": [],
         "payable": false,
         "stateMutability": "nonpayable",
@@ -242,6 +352,6 @@
       "version": "0.4.18+commit.9cf6e910.Emscripten.clang"
     },
     "schemaVersion": "1.0.1",
-    "updatedAt": "2018-01-19T05:00:40.762Z"
+    "updatedAt": "2018-01-23T22:01:35.733Z"
   }
 }

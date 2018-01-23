@@ -36,6 +36,8 @@ module.exports = {
       provider: () =>
         new HDWalletProvider(mnemonic, `https://mainnet.infura.io/${infuraId}`),
       network_id: 1,
+      gas: 500000,
+      gasPrice: 4000000000,
     },
   },
 };

@@ -29,9 +29,9 @@ const deployInfo = (deployer, contract) => {
     schemaVersion,
     updatedAt,
   });
-  networks[network_id].networkName = deployer.network;
-  networks[network_id].networkLocation =
-    truffleConfig.networks[deployer.network];
+  // networks[network_id].networkName = deployer.network;
+  // networks[network_id].networkLocation =
+  //   truffleConfig.networks[deployer.network];
   fs.writeFileSync(infoFile, JSON.stringify(info, null, 2));
 };
 
