@@ -1,6 +1,6 @@
 {
   "name": "wip-create-react-dapp",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
   "keywords": [],
   "engines": {
@@ -10,8 +10,10 @@
   "homepage": "https://github.com/mjhm/create-react-dapp",
   "bugs": "https://github.com/mjhm/create-react-dapp/issues",
   "license": "MIT",
-  "author": { "name": "John McLaughlin" },
-  "bin" : "scripts/create-react-dapp",
+  "author": {
+    "name": "John McLaughlin"
+  },
+  "bin": "scripts/create-react-dapp",
   "repository": "github:mjhm/create-react-dapp",
   "files": [
     "dapp",
