@@ -1,7 +1,21 @@
 #!/bin/bash
 
+PACKAGE_NAME=wip_create_react_app
+
+if [ -z "$1" ]; then
+  npx create-react-app --help
+fi
+
 echo ********** 1. CREATE REACT APP $@
+echo
 npx create-react-app $@
 echo ********** DONE CREATING REACT APP ***********
 echo **********************************************
+
 echo ********** 2. CREATING DAPP LAYER ************
+
+echo command line $*
+echo environment:
+env | sort
+
+mv node_modules/$PACKAGE_NAME/dapp .

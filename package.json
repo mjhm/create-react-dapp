@@ -1,7 +1,25 @@
 {
-  "name": "@mjhm/create-react-dapp",
+  "name": "wip-create-react-dapp",
   "version": "0.1.0",
-  "private": true,
+  "description": "",
+  "keywords": [],
+  "engines": {
+    "node": ">=8",
+    "npm": ">=5.2"
+  },
+  "homepage": "https://github.com/mjhm/create-react-dapp",
+  "bugs": "https://github.com/mjhm/create-react-dapp/issues",
+  "license": "MIT",
+  "author": { "name": "John McLaughlin" },
+  "bin" : "scripts/create-react-dapp",
+  "repository": "github:mjhm/create-react-dapp",
+  "files": [
+    "dapp",
+    "public",
+    "src",
+    ".flowconfig",
+    ".gitignore"
+  ],
   "dependencies": {
     "bluebird": "^3.5.1",
     "bootstrap": "^4.0.0",
