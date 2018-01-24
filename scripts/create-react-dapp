@@ -4,18 +4,23 @@ PACKAGE_NAME=wip_create_react_app
 
 if [ -z "$1" ]; then
   npx create-react-app --help
+  exit 1
 fi
 
-echo ********** 1. CREATE REACT APP $@
+echo '********** 1. CREATE REACT APP $@'
 echo
 npx create-react-app $@
-echo ********** DONE CREATING REACT APP ***********
-echo **********************************************
+echo '********** DONE CREATING REACT APP ***********'
+echo '**********************************************'
 
-echo ********** 2. CREATING DAPP LAYER ************
+echo '********** 2. CREATING DAPP LAYER ************'
 
-echo command line $*
+echo command $0
+echo all args $*
+echo all args from first $@
 echo environment:
 env | sort
+echo CWD
+pwd
 
-mv node_modules/$PACKAGE_NAME/dapp .
+mv node_modules/$PACKAGE_NAME/dapp $1/.
