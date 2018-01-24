@@ -4,13 +4,14 @@
 set -x
 
 PACKAGE_DIR=${0%/*/*}
+PACKAGE_NAME=${0##*/}
 
 if [ -z "$1" ]; then
   npx create-react-app --help | sed 's/create-react-app/create-react-dapp/'
   exit 1
 fi
 
-PACKAGE_NAME=$1
+APP_NAME=$1
 
 echo '********** 1. CREATE REACT APP $@'
 echo
@@ -22,7 +23,6 @@ echo '********** 2. CREATING DAPP LAYER ************'
 
 echo $0
 
-ls $PACKAGE_DIR
 ls $PACKAGE_DIR/lib/node_modules
 ls $PACKAGE_DIR/lib/node_modules/$PACKAGE_NAME
 
