@@ -265,7 +265,7 @@
   "5777": {
     "events": {},
     "links": {},
-    "address": "0x8f0483125fcb9aaaefa9209d8e9d7b9c8b9fb90f",
+    "address": "0x2c2b9c9a4a25e24b174f26114e8926a9f2128fe4",
     "networkName": "development",
     "networkLocation": {
       "host": "127.0.0.1",
@@ -352,6 +352,6 @@
       "version": "0.4.18+commit.9cf6e910.Emscripten.clang"
     },
     "schemaVersion": "1.0.1",
-    "updatedAt": "2018-01-23T22:01:35.733Z"
+    "updatedAt": "2018-01-23T23:54:04.912Z"
   }
 }

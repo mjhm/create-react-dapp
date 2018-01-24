@@ -1,5 +1,7 @@
 /* global web3 */
 
+// NOTE: All this will be much cleaner with web3 1.x and async/await patterns.
+
 import Web3 from 'web3';
 
 const checkAccounts = (localWeb3, callback) => {
@@ -31,15 +33,26 @@ const checkNetworkId = (localWeb3, requestedNetId, callback) => {
 };
 
 const resolver = (resolve, reject, networkLocation) => {
-  const localWeb3 =
-    typeof web3 === 'undefined'
-      ? new Web3(
-          new Web3.providers.HttpProvider(
-            `http://${networkLocation.host}:${networkLocation.port}`,
-          ),
-        )
-      : new Web3(web3.currentProvider);
+  let localWeb3;
 
+  // Use HttpProvider if the requested networkLocation has host and port
+  if (networkLocation.host && networkLocation.port) {
+    localWeb3 = new Web3(
+      new Web3.providers.HttpProvider(
+        `http://${networkLocation.host}:${networkLocation.port}`,
+      ),
+    );
+  } else if (typeof web3 === 'undefined') {
+    return reject(
+      new Error(
+        "web3 isn't defined, perhaps MetaMask is disabled or not installed",
+      ),
+    );
+  } else {
+    localWeb3 = new Web3(web3.currentProvider);
+  }
+
+  // Check account and the network id, to prevent potentially costly surprises.
   checkAccounts(localWeb3, (err, defaultAccount) => {
     if (err) {
       return reject(err);
@@ -55,6 +68,8 @@ const resolver = (resolve, reject, networkLocation) => {
 };
 
 const getWeb3 = networkLocation => {
+  // The resolver needs to be called after the DOM is ready to give MetaMask enough
+  // time to inject "web3".
   return new Promise((resolve, reject) => {
     if (document.readyState === 'complete') {
       resolver(resolve, reject, networkLocation);

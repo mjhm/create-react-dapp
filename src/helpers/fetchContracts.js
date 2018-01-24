@@ -1,6 +1,10 @@
 import Promise from 'bluebird';
 import getWeb3 from './getWeb3';
 
+// General purpose utility for setting up web3 contract instances.
+// It fetches the contract info files which includes the abi, address
+// and network location, connects to a web3 provider and instantiates
+// the contracts.
 const fetchContracts = async (network, contractNames) => {
   const contracts = {};
   let localWeb3 = null;

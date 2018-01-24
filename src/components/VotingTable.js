@@ -29,13 +29,13 @@ const VotingTable = (props: votingTableProps) => (
         <th>Votes</th>
       </tr>
       <tr>
-        <th colSpan="2" style={{ padding: 0, fontSize: '.75rem' }}>
+        <th colSpan="2" style={{ padding: 0 }}>
           {props.votePending ? (
             <Progress animated value="100" color="warning">
               Vote Pending
             </Progress>
           ) : (
-            <Progress bar value="100" color="success">
+            <Progress value="100" color="success">
               Votes Recorded
             </Progress>
           )}
