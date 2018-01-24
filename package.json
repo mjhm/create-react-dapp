@@ -18,6 +18,7 @@
   "files": [
     "dapp",
     "public",
+    "scripts",
     "src",
     ".flowconfig",
     ".gitignore"
