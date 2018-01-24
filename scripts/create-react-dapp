@@ -1,9 +1,9 @@
 #!/bin/bash
 
-PACKAGE_NAME=wip_create_react_app
+PACKAGE_DIR=${0%/*/*}
 
 if [ -z "$1" ]; then
-  npx create-react-app --help
+  npx create-react-app --help | sed 's/create-react-app/create-react-dapp/'
   exit 1
 fi
 
@@ -16,11 +16,11 @@ echo '**********************************************'
 echo '********** 2. CREATING DAPP LAYER ************'
 
 echo command $0
-echo all args $*
-echo all args from first $@
+echo local_variables:
+diff set.sorted printenv.sorted | grep "<" | awk '{ print $2 }'
 echo environment:
 env | sort
 echo CWD
 pwd
 
-mv node_modules/$PACKAGE_NAME/dapp $1/.
+mv $PACKAGE_DIR/node_modules/$PACKAGE_NAME/dapp $1/.
