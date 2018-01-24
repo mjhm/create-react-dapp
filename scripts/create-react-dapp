@@ -23,8 +23,7 @@ echo '********** 2. CREATING DAPP LAYER ************'
 echo $0
 
 ls $PACKAGE_DIR
-ls $PACKAGE_DIR/*
-ls $PACKAGE_DIR/node_modules
-ls $PACKAGE_DIR/node_modules/$PACKAGE_NAME
+ls $PACKAGE_DIR/lib/node_modules
+ls $PACKAGE_DIR/lib/node_modules/$PACKAGE_NAME
 
 mv $PACKAGE_DIR/node_modules/$PACKAGE_NAME/dapp $1/.
