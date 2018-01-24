@@ -1,0 +1,7 @@
+#!/bin/bash
+
+echo ********** 1. CREATE REACT APP $@
+npx create-react-app $@
+echo ********** DONE CREATING REACT APP ***********
+echo **********************************************
+echo ********** 2. CREATING DAPP LAYER ************
