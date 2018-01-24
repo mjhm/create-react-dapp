@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# set -e
+set -x
+
 PACKAGE_DIR=${0%/*/*}
 
 if [ -z "$1" ]; then
@@ -17,12 +20,10 @@ echo '**********************************************'
 
 echo '********** 2. CREATING DAPP LAYER ************'
 
-echo command $0
-echo local_variables:
-compgen -v
-echo environment:
-env | sort
-echo CWD
-pwd
+echo $0
+
+ls $PACKAGE_DIR
+ls $PACKAGE_DIR/node_modules
+ls $PACKAGE_DIR/node_modules/$PACKAGE_NAME
 
 mv $PACKAGE_DIR/node_modules/$PACKAGE_NAME/dapp $1/.
