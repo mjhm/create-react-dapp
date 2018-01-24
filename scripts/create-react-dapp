@@ -7,6 +7,8 @@ if [ -z "$1" ]; then
   exit 1
 fi
 
+PACKAGE_NAME=$1
+
 echo '********** 1. CREATE REACT APP $@'
 echo
 npx create-react-app $@
@@ -17,7 +19,7 @@ echo '********** 2. CREATING DAPP LAYER ************'
 
 echo command $0
 echo local_variables:
-diff set.sorted printenv.sorted | grep "<" | awk '{ print $2 }'
+compgen -v
 echo environment:
 env | sort
 echo CWD
