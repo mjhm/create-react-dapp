@@ -26,8 +26,9 @@ echo $0
 ls $TEMPLATE_DIR
 
 ## / files
-mv $TEMPLATE_DIR/.flowconfig  $TEMPLATE_DIR/.gitignore $APP_NAME/
-$TEMPLATE_DIR/../scripts/merge_package.js
+mv $TEMPLATE_DIR/.flowconfig  $APP_NAME/
+mv $TEMPLATE_DIR/.gitignore  $APP_NAME/
+node $TEMPLATE_DIR/../scripts/merge_package.js
 
 ## /dapp
 mv $TEMPLATE_DIR/dapp $APP_NAME
@@ -39,7 +40,7 @@ sed 's/App/dApp/g' $APP_NAME/public/manifest.json > $APP_NAME/public/_manifest.j
 mv $APP_NAME/public/_manifest.json $APP_NAME/public/manifest.json
 
 ## /src
-rm $TEMPLATE_DIR/src/App.* $TEMPLATE_DIR/src/index.*
+rm $APP_NAME/src/App.* $APP_NAME/src/index.*
 mv $TEMPLATE_DIR/src/*  $APP_NAME/src/
 
 ##
