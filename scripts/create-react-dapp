@@ -12,7 +12,7 @@ fi
 APP_NAME=$1
 
 echo '**********    CREATE REACT DAPP    **********'
-echo '********** 1. CREATE REACT APP ' $@
+echo '********** 1. CREATE REACT APP ' $@ ' ***'
 echo
 npx create-react-app $@
 echo '********** DONE CREATING REACT APP ***********'
@@ -46,8 +46,8 @@ sed 's/App/dApp/g' $APP_NAME/public/manifest.json > $APP_NAME/public/_manifest.j
 mv $APP_NAME/public/_manifest.json $APP_NAME/public/manifest.json
 
 ## /src
-rm $APP_NAME/src/App.* $APP_NAME/src/index.*
-mv $TEMPLATE_DIR/src/*  $APP_NAME/src/
+rm -rf $APP_NAME/src
+mv $TEMPLATE_DIR/src  $APP_NAME/src/
 
 
 echo '********** DONE CREATING DAPP LAYER **********'
@@ -56,9 +56,9 @@ echo
 echo '********** 3. INSTALLING DEPENDENCIES ********'
 
 if hash yarn 2>/dev/null; then
-  yarn
+  (cd $APP_NAME && yarn)
 else
-  npm install
+  (cd $APP_NAME && npm install)
 fi
 
 echo '********** DONE INSTALLING DEPENDENCIES ******'

@@ -18,6 +18,6 @@ npm run ganache
 In a separate shell
 
 ```
-npm migrate
+npm run migrate
 npm start
 ```
