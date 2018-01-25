@@ -1,8 +1,6 @@
 #!/bin/bash
 
-# set -e
-set -x
-
+set -e
 
 TEMPLATE_DIR=${0%/*/*}/lib/node_modules/${0##*/}/template
 
@@ -18,13 +16,11 @@ echo
 npx create-react-app $@
 echo '********** DONE CREATING REACT APP ***********'
 echo '**********************************************'
-
+echo
 echo '********** 2. CREATING DAPP LAYER ************'
-
-echo $0
-
-ls $TEMPLATE_DIR
-ls `pwd`/$APP_NAME/
+echo
+echo Template Source: $TEMPLATE_DIR
+echo App Destination `pwd`/$APP_NAME/
 
 ## / files
 mv $TEMPLATE_DIR/.flowconfig  $APP_NAME/
