@@ -6,11 +6,9 @@
 # testing
 /coverage
 
-# template
-/template/public/contract-info
-/template/node_modules
-/template/build
-/template/dapp/build
+# production
+/build
+/dapp/build
 
 # misc
 .DS_Store
