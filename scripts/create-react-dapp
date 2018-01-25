@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -x
+set -e
 
 TEMPLATE_DIR=${0%/*/*}/lib/node_modules/${0##*/}/template
 
@@ -50,3 +50,16 @@ rm $APP_NAME/src/App.* $APP_NAME/src/index.*
 mv $TEMPLATE_DIR/src/*  $APP_NAME/src/
 
 
+echo '********** DONE CREATING DAPP LAYER **********'
+echo '**********************************************'
+echo
+echo '********** 3. INSTALLING DEPENDENCIES ********'
+
+if hash yarn 2>/dev/null; then
+  yarn
+else
+  npm install
+fi
+
+echo '********** DONE INSTALLING DEPENDENCIES ******'
+echo '**********************************************'

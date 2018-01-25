@@ -28,7 +28,7 @@
   },
   "scripts": {
     "ganache": "ganache-cli",
-    "deploy": "node contracts/dev_deploy.js",
+    "migrate": "cd dapp && truffle migrate",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test_components": "react-scripts test --env=jsdom src/components",
