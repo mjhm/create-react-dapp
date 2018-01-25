@@ -28,7 +28,9 @@ ls $TEMPLATE_DIR
 ## / files
 mv $TEMPLATE_DIR/.flowconfig  $APP_NAME/
 mv $TEMPLATE_DIR/.gitignore  $APP_NAME/
-node $TEMPLATE_DIR/../scripts/merge_package.js $TEMPLATE_DIR/ $APP_NAME/
+node $TEMPLATE_DIR/../scripts/merge_package.js $TEMPLATE_DIR/ ./$APP_NAME/
+mv $APP_NAME/README.md $APP_NAME/REACT.md
+mv $TEMPLATE_DIR/TEMPLATE.md  $APP_NAME/README.md
 
 ## /dapp
 mv $TEMPLATE_DIR/dapp $APP_NAME
@@ -43,5 +45,4 @@ mv $APP_NAME/public/_manifest.json $APP_NAME/public/manifest.json
 rm $APP_NAME/src/App.* $APP_NAME/src/index.*
 mv $TEMPLATE_DIR/src/*  $APP_NAME/src/
 
-##
 
