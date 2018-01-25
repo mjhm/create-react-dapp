@@ -16,6 +16,7 @@
   "bin": "scripts/create-react-dapp",
   "repository": "github:mjhm/create-react-dapp",
   "files": [
+    "scripts",
     "template"
   ]
 }
