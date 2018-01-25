@@ -1,0 +1,59 @@
+{
+  "name": "wip-create-react-dapp",
+  "version": "0.1.12",
+  "description": "",
+  "keywords": [],
+  "engines": {
+    "node": ">=8",
+    "npm": ">=5.2"
+  },
+  "homepage": "https://github.com/mjhm/create-react-dapp",
+  "bugs": "https://github.com/mjhm/create-react-dapp/issues",
+  "license": "MIT",
+  "author": {
+    "name": "John McLaughlin"
+  },
+  "bin": "scripts/create-react-dapp",
+  "repository": "github:mjhm/create-react-dapp",
+  "files": [
+    "dapp",
+    "public",
+    "scripts",
+    "src",
+    ".flowconfig",
+    ".gitignore"
+  ],
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "bootstrap": "^4.0.0",
+    "ganache-cli": "^6.0.3",
+    "lodash": "^4.17.4",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-scripts": "1.1.0",
+    "reactstrap": "^5.0.0-alpha.4",
+    "solc": "^0.4.19",
+    "web3": "^0.20.4"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.1.2",
+    "babel-preset-stage-2": "^6.24.1",
+    "eslint": "^4.14.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.4.0",
+    "eslint-plugin-react": "^7.5.1",
+    "mkdirp": "^0.5.1",
+    "prettier": "^1.9.2",
+    "truffle-hdwallet-provider": "^0.0.3"
+  },
+  "scripts": {
+    "ganache": "ganache-cli",
+    "deploy": "node contracts/dev_deploy.js",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test_components": "react-scripts test --env=jsdom src/components",
+    "test_contracts": "react-scripts test --env=node contracts",
+    "test": "CI=true yarn run test_components && CI=true yarn run test_contracts",
+    "eject": "react-scripts eject"
+  }
+}

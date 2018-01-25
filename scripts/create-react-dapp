@@ -3,8 +3,8 @@
 # set -e
 set -x
 
-PACKAGE_DIR=${0%/*/*}
-PACKAGE_NAME=${0##*/}
+
+TEMPLATE_DIR=${0%/*/*}/lib/node_modules/${0##*/template}
 
 if [ -z "$1" ]; then
   npx create-react-app --help | sed 's/create-react-app/create-react-dapp/'
@@ -23,8 +23,14 @@ echo '********** 2. CREATING DAPP LAYER ************'
 
 echo $0
 
-ls $PACKAGE_DIR/lib/node_modules
-ls $PACKAGE_DIR/lib/node_modules/$PACKAGE_NAMEls
+ls $TEMPLATE_DIR/lib/node_modules
+ls $TEMPLATE_DIR/lib/node_modules/$PACKAGE_NAMEls
 
+_DIR=$TEMPLATE_DIR/lib/node_modules/$PACKAGE_NAME/dapp
 
-mv $PACKAGE_DIR/lib/node_modules/$PACKAGE_NAME/dapp $1/.
+mv $TEMPLATE_DIR/dapp $APP_NAME
+mv $TEMPLATE_DIR/public/favicon.ico $APP_NAME/public
+mv $TEMPLATE_DIR/public/index.html $APP_NAME/public/index.html
+sed 's/App/dApp/g' $APP_NAME/public/manifest.json > $APP_NAME/public/_manifest.json
+mv $APP_NAME/public/_manifest.json $APP_NAME/public/manifest.json
+
