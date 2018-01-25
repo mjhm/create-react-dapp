@@ -6,6 +6,11 @@
 # testing
 /coverage
 
+# template
+/template/public/contract-info
+/template/build
+/template/dapp/build
+
 # misc
 .DS_Store
 .env.local

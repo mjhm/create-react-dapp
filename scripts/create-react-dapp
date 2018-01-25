@@ -25,13 +25,8 @@ echo App Destination `pwd`/$APP_NAME/
 
 ## / files
 mv $TEMPLATE_DIR/.flowconfig  $APP_NAME/
-ls -a $TEMPLATE_DIR
-# Workaround for https://github.com/npm/npm/issues/12917
-if [ -e  $TEMPLATE_DIR/.gitignore ]; then
-  mv $TEMPLATE_DIR/.gitignore  $APP_NAME/
-elif [ -e  $TEMPLATE_DIR/.npmignore ]; then
-  mv $TEMPLATE_DIR/.npmignore  $APP_NAME/.gitignore
-fi
+mv $TEMPLATE_DIR/gitignore  $APP_NAME/.gitignore
+
 node $TEMPLATE_DIR/../scripts/merge_package.js $TEMPLATE_DIR/ `pwd`/$APP_NAME/
 mv $APP_NAME/README.md $APP_NAME/REACT.md
 mv $TEMPLATE_DIR/TEMPLATE.md  $APP_NAME/README.md
