@@ -4,7 +4,7 @@
 set -x
 
 
-TEMPLATE_DIR=${0%/*/*}/lib/node_modules/${0##*}/template
+TEMPLATE_DIR=${0%/*/*}/lib/node_modules/${0##*/}/template
 
 if [ -z "$1" ]; then
   npx create-react-app --help | sed 's/create-react-app/create-react-dapp/'
