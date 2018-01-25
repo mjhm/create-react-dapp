@@ -28,7 +28,7 @@ ls $TEMPLATE_DIR
 ## / files
 mv $TEMPLATE_DIR/.flowconfig  $APP_NAME/
 mv $TEMPLATE_DIR/.gitignore  $APP_NAME/
-node $TEMPLATE_DIR/../scripts/merge_package.js
+node $TEMPLATE_DIR/../scripts/merge_package.js $TEMPLATE_DIR/ $APP_NAME/
 
 ## /dapp
 mv $TEMPLATE_DIR/dapp $APP_NAME
