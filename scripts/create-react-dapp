@@ -26,7 +26,7 @@ echo App Destination `pwd`/$APP_NAME/
 ## / files
 mv $TEMPLATE_DIR/.flowconfig  $APP_NAME/
 ls -a $TEMPLATE_DIR
-# workaround for https://github.com/npm/npm/issues/12917
+# Workaround for https://github.com/npm/npm/issues/12917
 if [ -e  $TEMPLATE_DIR/.gitignore ]; then
   mv $TEMPLATE_DIR/.gitignore  $APP_NAME/
 elif [ -e  $TEMPLATE_DIR/.npmignore ]; then
