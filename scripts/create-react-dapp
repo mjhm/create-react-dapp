@@ -24,11 +24,12 @@ echo '********** 2. CREATING DAPP LAYER ************'
 echo $0
 
 ls $TEMPLATE_DIR
+ls `pwd`/$APP_NAME/
 
 ## / files
 mv $TEMPLATE_DIR/.flowconfig  $APP_NAME/
 mv $TEMPLATE_DIR/.gitignore  $APP_NAME/
-node $TEMPLATE_DIR/../scripts/merge_package.js $TEMPLATE_DIR/ ./$APP_NAME/
+node $TEMPLATE_DIR/../scripts/merge_package.js $TEMPLATE_DIR/ `pwd`/$APP_NAME/
 mv $APP_NAME/README.md $APP_NAME/REACT.md
 mv $TEMPLATE_DIR/TEMPLATE.md  $APP_NAME/README.md
 
