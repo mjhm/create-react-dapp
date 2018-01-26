@@ -29,7 +29,11 @@
   "scripts": {
     "ganache": "ganache-cli",
     "migrate": "cd dapp && truffle migrate",
+    "migrate_ganacheUI": "cd dapp && truffle migrate --network migrateUI",
+    "migrate_rinkeby": "cd dapp && truffle migrate --network rinkeby",
     "start": "react-scripts start",
+    "start_ganacheUI": "REACT_APP_ETH_NETWORK=ganacheUI react-scripts start",
+    "start_rinkeby": "REACT_APP_ETH_NETWORK=rinkeby react-scripts start",
     "build": "react-scripts build",
     "test_components": "react-scripts test --env=jsdom src/components",
     "test_contracts": "react-scripts test --env=node contracts",

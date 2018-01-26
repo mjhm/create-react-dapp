@@ -22,9 +22,13 @@ const checkNetworkId = (localWeb3, requestedNetId, callback) => {
       return callback(err);
     }
     if (requestedNetId.toString() !== actualNetId.toString()) {
+      let hint = 'Perhaps MetaMask is set to the wrong network.';
+      if (+requestedNetId > 10000 && +requestedNetId > 10000) {
+        hint = 'Perhaps you need to redeploy your contracts.';
+      }
       return callback(
         new Error(
-          `The web app's netId (${requestedNetId}) doesn't match Web3's netId (${actualNetId}), perhaps MetaMask is set to the wrong network`,
+          `The web app's netId (${requestedNetId}) doesn't match Web3's netId (${actualNetId}). ${hint}`,
         ),
       );
     }

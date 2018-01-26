@@ -20,7 +20,7 @@ module.exports = {
       network_id: '*',
     },
     // Ganach UI
-    ganache: {
+    ganacheUI: {
       host: '127.0.0.1',
       port: 7545,
       network_id: '*',
@@ -30,6 +30,8 @@ module.exports = {
       provider: () =>
         new HDWalletProvider(mnemonic, `https://rinkeby.infura.io/${infuraId}`),
       network_id: 4,
+      gas: 500000,
+      gasPrice: 4000000000,
     },
     // live Ethereum network
     live: {

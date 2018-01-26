@@ -1,5 +1,7 @@
 const fs = require('fs');
 const _ = require('lodash');
+// vvv This is needed because something is clobbering the cached truffle config.
+delete require.cache[require.resolve('../truffle.js')];
 const truffleConfig = require('../truffle.js');
 const mkdirp = require('mkdirp');
 
@@ -23,6 +25,8 @@ const deployInfo = (deployer, contract) => {
   if (fs.existsSync(infoFile)) {
     _.defaults(info, JSON.parse(fs.readFileSync(infoFile)));
   }
+
+  console.log('truffleConfig', truffleConfig.networks);
 
   const networkLocation = Object.assign(
     {},

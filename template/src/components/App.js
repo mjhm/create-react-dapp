@@ -5,6 +5,9 @@ import { Container } from 'reactstrap';
 import VotingTable from './VotingTable';
 import fetchContracts from '../helpers/fetchContracts';
 import Voting from '../helpers/Voting';
+import reactLogo from '../reactLogo.svg';
+import ethereumLogo from '../ethereumLogo.svg';
+import './App.css';
 
 class App extends React.Component {
   state: {
@@ -42,7 +45,10 @@ class App extends React.Component {
   render() {
     return (
       <Container>
-        <h1>Simple React Voting Application</h1>
+        <h1>
+          <img src={reactLogo} alt="reactLogo" /> React, meet Ethereum{' '}
+          <img src={ethereumLogo} alt="reactLogo" />{' '}
+        </h1>
         {this.state.votes ? (
           <VotingTable
             candidateList={this.state.poll.candidateList}
