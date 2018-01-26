@@ -2,18 +2,18 @@
 
 ## Quick Start
 
-### [Install Truffle](http://truffleframework.com/docs/getting_started/installation)
+### [Install Truffle].(http://truffleframework.com/docs/getting_started/installation)
 ```
 npm install -g truffle
 ```
-### Create your app, start a Ganache blockchain
+### Create your app and start a Ganache blockchain.
 ```
-npx create-react-dapp my-app
-cd my-app
+npx create-react-dapp mydapp
+cd mydapp
 npm run ganache
 ```
 
-### Compile and deploy contracts.
+### Compile and deploy contracts, then launch the app.
 
 In a separate shell
 

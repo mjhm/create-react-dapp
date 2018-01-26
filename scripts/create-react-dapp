@@ -25,7 +25,7 @@ echo App Destination `pwd`/$APP_NAME/
 
 ## / files
 mv $TEMPLATE_DIR/.flowconfig  $APP_NAME/
-mv $TEMPLATE_DIR/gitignore  $APP_NAME/.gitignore
+mv $TEMPLATE_DIR/.npmignore  $APP_NAME/.gitignore
 
 node $TEMPLATE_DIR/../scripts/merge_package.js $TEMPLATE_DIR/ `pwd`/$APP_NAME/
 mv $APP_NAME/README.md $APP_NAME/REACT.md

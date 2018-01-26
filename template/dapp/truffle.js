@@ -11,19 +11,19 @@ module.exports = {
     development: {
       host: '127.0.0.1',
       port: 8545,
-      network_id: '5778',
+      network_id: '*',
     },
     // truffle develop
     develop: {
       host: '127.0.0.1',
       port: 9545,
-      network_id: '4777',
+      network_id: '*',
     },
     // Ganach UI
     ganache: {
       host: '127.0.0.1',
       port: 7545,
-      network_id: '5777',
+      network_id: '*',
     },
     // rinkeby
     rinkeby: {
@@ -36,6 +36,8 @@ module.exports = {
       provider: () =>
         new HDWalletProvider(mnemonic, `https://mainnet.infura.io/${infuraId}`),
       network_id: 1,
+      // Set the gas and gasPrice very carefully.
+      // If set incorrectly they can prevent deploys, or clean out your account!
       gas: 500000,
       gasPrice: 4000000000,
     },
