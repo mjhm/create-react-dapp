@@ -1,8 +1,17 @@
 {
   "name": "create-react-dapp",
   "version": "0.2.10",
-  "description": "",
-  "keywords": [],
+  "description": "An Ethereum template layered upon create-react-app",
+  "keywords": [
+    "ethereum",
+    "web3",
+    "truffle",
+    "trufflesuite",
+    "truffleframework",
+    "react",
+    "ganache",
+    "rinkeby"
+  ],
   "engines": {
     "node": ">=8",
     "npm": ">=5.2"
