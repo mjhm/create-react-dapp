@@ -38,7 +38,7 @@ This should launch a browser at URL `http://localhost:3000`. If it doesn't, try 
 
 ## Features
 
-1. Uses Facebook's `create-react-app` directly, so it will always retrieve the latest React and Webpack features and best practices, with no configuation.
+1. Uses Facebook's [`create-react-app`](https://github.com/facebook/create-react-app) directly, so it will always retrieve the latest React and Webpack features and best practices, with no configuation.
 2. Clear separation of concerns between the React and Ethereum programming.
 3. Uses Truffle for compilation and migration management of Ganache, Rinkeby, and MainNet configurations.
 4. Minimal and self-contained installation. Doesn't require Remix, Geth, or Parity.
@@ -64,17 +64,19 @@ npm run start_ganacheUI
 
 > 💡 Restarting the GanachUI is easy but not obvious. Click on the ⚙️ icon in the upper right of the UI. Then click the "Restart" button.
 
+> 💡 Truffle migrations are designed to be roughly analogous to database migrations, in that they replace and/or extend the original contracts. Migrations need to be thought through carefully and are case specific. So for simplicity  `npm run migrate_ganacheUI` scripts heavy handedly uses `--reset` and `--compile-all`.
+
 ### Rinkeby and Other Public TestNets
 
 For the public test nets you will need to install [MetaMask](https://metamask.io/) in your browser. Follow the installation instructions, create an account, then use the upper right menu to select the "Rinkeby Test Network".
 
-> ⚠️ **Security precaution.** If you already have a real Ethereum account on the Main Ethereum Network, you should create a new dummy account for use with Rinkeby. This will prevent accidental exposure of your real account's PrivateKey. To do so use the MetaMask account selection icon (upper, second from the right).
+> ⚠️ **Security precaution.** If you already have a real Ethereum account on the Main Ethereum Network, you should create a new dummy account for use with Rinkeby. This will prevent accidental exposure of your real account's PrivateKey. To do so use the MetaMask account selection icon (top of metamask, second icon from the right).
 
 You will also need to get some test "ether" from the [Rinkeby Faucet](https://www.rinkeby.io/#faucet)
 
 Next copy the account's Private Key from MetaMask. To do so click on the **▪️ ▪️ ▪️** icon to the right of the account's name, click "Export Private Key", follow the password prompt, then click on the private key to copy it to the clipboard.
 
-Now we're ready to go. (Be patient with the migration it can take a minute.)
+Now we're ready to go. (Be patient with the migration. It can take a minute.)
 ```
 ETH_PK=<paste private key here> npm run migrate_rinkeby
 npm run start_rinkeby
@@ -87,15 +89,13 @@ ETH_PK=<paste private key here> npm run kill_rinkeby
 ```
 > ⚠️ Redo'ing the "migrate" step overwrites the contract address in the compilation artifacts, so the "kill" script will not be able to find the contract to kill. So be sure to "kill" the contracts before re-migrating.
 
-> 💡 Truffle migrations are designed to be roughly analogous to database migrations, in that they replace and/or extend the original contracts. Migrations need to be thought through carefully and are case specific. So for simplicity the included `npm run migrate...` scripts heavy handedly `--reset` and `--compile-all`.
-
 The other test nets (Kovan and Ropsten) should be similar, but you will need to add their configs to [truffle.js](./template/dapp/truffle.js) and optionally migrate and start scripts to [package.json](./template/package.json)
 
 ### Ethereum Main Network
 
-Once everything is tested thoroughly on Rinkeby, you'll (obviously) want to deploy to the Ethereum Main Network. No scripts are included for working with the "live" network, because if you are to this point you don't need to use the scripts as training wheels.
+Once everything is tested thoroughly on Rinkeby, you'll (obviously) want to deploy to the Ethereum Main Network. No scripts are included for working with the "live" network, because if you are to this point, you shouldn't need to use the scripts as training wheels.
 
-> ⚠️ Deploying the scripts will cost you. At the time of this writing it's about $5, and each "vote" in the app costs about $0.10. However if you set your `gasPrice` too high it can cost you a lot more. So don't put your life savings into the account that you deploy from, and be careful how you set the `gas` and `gasPrice` parameters in [truffle.js](./template/dapp/truffle.js)
+> ⚠️ Deploying the contracts will cost you. At the time of this writing it's about $5, and each "vote" in the app costs about $0.10. However if you set your `gasPrice` too high it can cost you a lot more. So don't put your life savings into the account that you deploy from, and be careful how you set the `gas` and `gasPrice` parameters in [truffle.js](./template/dapp/truffle.js)
 
 ## Troubleshooting
 
@@ -103,3 +103,15 @@ Once everything is tested thoroughly on Rinkeby, you'll (obviously) want to depl
 
 1. Upgrade to node version >=8 and npm version >=5.2.0. The `create-react-dapp` script depends on `npx` which is included in the later versions of `npm`.
 2. Upgrade `create-react-app` to the latest version.  Or even better uninstall it. You probably don't need it anymore since `npx create-react-app ...` loads and uses the most recent version of `create-react-app` on the fly.
+
+### Migration
+
+If migration fails on GanacheUI just try rerunning. Example error:
+```
+Error encountered, bailing. Network state unknown. Review successful transactions manually.
+Error: The contract code couldn't be stored, please check your gas amount.
+...
+```
+
+
+

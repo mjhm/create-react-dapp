@@ -30,7 +30,7 @@
   "scripts": {
     "ganache": "ganache-cli",
     "migrate": "cd dapp && truffle migrate --reset --compile-all",
-    "migrate_ganacheUI": "cd dapp && truffle migrate --network migrateUI --reset --compile-all",
+    "migrate_ganacheUI": "cd dapp && truffle migrate --network ganacheUI --reset --compile-all",
     "migrate_rinkeby": "cd dapp && truffle migrate --network rinkeby",
     "start": "react-scripts start",
     "start_ganacheUI": "REACT_APP_ETH_NETWORK=ganacheUI react-scripts start",

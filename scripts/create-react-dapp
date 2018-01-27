@@ -20,8 +20,6 @@ echo '**********************************************'
 echo
 echo '********** 2. CREATING DAPP LAYER ************'
 echo
-echo Template Source: $TEMPLATE_DIR
-echo App Destination `pwd`/$APP_NAME/
 
 ## Files from /
 mv $TEMPLATE_DIR/.flowconfig  $APP_NAME/
