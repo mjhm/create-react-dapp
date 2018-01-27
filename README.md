@@ -2,7 +2,7 @@
 
 ## Quick Start
 
-### [Install Truffle](http://truffleframework.com/docs/getting_started/installation)
+### Install [Truffle](http://truffleframework.com/docs/getting_started/installation)
 ```
 npm install -g truffle
 ```
@@ -29,10 +29,14 @@ This should launch a browser at URL `http://localhost:3000`. If it doesn't, try 
 <!-- toc -->
 
 - [Features](#features)
+- [Build Your dApp](#build-your-dapp)
 - [Deployment Options](#deployment-options)
   * [Ganache and Ganache UI](#ganache-and-ganache-ui)
   * [Rinkeby and Other Public TestNets](#rinkeby-and-other-public-testnets)
   * [Ethereum Main Network](#ethereum-main-network)
+- [Troubleshooting](#troubleshooting)
+  * [Installation](#installation)
+  * [Migration](#migration)
 
 <!-- tocstop -->
 
@@ -42,6 +46,13 @@ This should launch a browser at URL `http://localhost:3000`. If it doesn't, try 
 2. Clear separation of concerns between the React and Ethereum programming.
 3. Uses Truffle for compilation and migration management of Ganache, Rinkeby, and MainNet configurations.
 4. Minimal and self-contained installation. Doesn't require Remix, Geth, or Parity.
+
+## Build Your dApp
+
+- All of the React code is in the `src` folder. Most of your work there will be in `src/components`
+- All of the Ethereum code is in the `dapp` folder, most of your work will be in the Solidity code of `dapp/contracts`.
+- When contracts are deployed (or migrated) the necessary contract connection info is copied into the `public/contract-info` folder.
+- Use `src/helpers/fetchContracts.js` to retrieve this contract info, so that it can be connected to the appropriate handlers in your app. See `src/helpers/Voting.js` for example.
 
 ## Deployment Options
 
