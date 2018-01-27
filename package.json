@@ -18,5 +18,11 @@
   "files": [
     "scripts",
     "template"
-  ]
+  ],
+  "scripts": {
+    "toc": "markdown-toc -i ./README.md"
+  },
+  "devDependencies": {
+    "markdown-toc": "^1.2.0"
+  }
 }

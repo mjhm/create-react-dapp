@@ -3,6 +3,7 @@
     "node": ">=8",
     "npm": ">=5.2"
   },
+  "license": "MIT",
   "dependencies": {
     "bluebird": "^3.5.1",
     "bootstrap": "^4.0.0",
@@ -14,6 +15,7 @@
     "react-scripts": "1.1.0",
     "reactstrap": "^5.0.0-alpha.4",
     "solc": "^0.4.19",
+    "truffle-privatekey-provider": "^0.0.4",
     "web3": "^0.20.4"
   },
   "devDependencies": {
@@ -23,17 +25,18 @@
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-prettier": "^2.4.0",
     "eslint-plugin-react": "^7.5.1",
-    "prettier": "^1.9.2",
-    "truffle-hdwallet-provider": "^0.0.3"
+    "prettier": "^1.9.2"
   },
   "scripts": {
     "ganache": "ganache-cli",
-    "migrate": "cd dapp && truffle migrate",
-    "migrate_ganacheUI": "cd dapp && truffle migrate --network migrateUI",
+    "migrate": "cd dapp && truffle migrate --reset --compile-all",
+    "migrate_ganacheUI": "cd dapp && truffle migrate --network migrateUI --reset --compile-all",
     "migrate_rinkeby": "cd dapp && truffle migrate --network rinkeby",
     "start": "react-scripts start",
     "start_ganacheUI": "REACT_APP_ETH_NETWORK=ganacheUI react-scripts start",
     "start_rinkeby": "REACT_APP_ETH_NETWORK=rinkeby react-scripts start",
+    "kill_ganacheUI": "truffle exec ./helpers/killAll.js --network ganacheUI",
+    "kill_rinkeby": "truffle exec ./helpers/killAll.js --network rinkeby",
     "build": "react-scripts build",
     "test_components": "react-scripts test --env=jsdom src/components",
     "test_contracts": "react-scripts test --env=node contracts",

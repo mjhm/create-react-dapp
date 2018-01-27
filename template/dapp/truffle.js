@@ -1,6 +1,6 @@
-const HDWalletProvider = require('truffle-hdwallet-provider');
+const PrivateKeyProvider = require('truffle-privatekey-provider');
 
-const mnemonic = process.env.MNEMONIC;
+const ethPrivateKey = process.env.ETH_PK;
 const infuraId = process.env.INFURA_ID || '';
 
 module.exports = {
@@ -28,7 +28,10 @@ module.exports = {
     // rinkeby
     rinkeby: {
       provider: () =>
-        new HDWalletProvider(mnemonic, `https://rinkeby.infura.io/${infuraId}`),
+        new PrivateKeyProvider(
+          ethPrivateKey,
+          `https://rinkeby.infura.io/${infuraId}`,
+        ),
       network_id: 4,
       gas: 500000,
       gasPrice: 4000000000,
@@ -36,7 +39,10 @@ module.exports = {
     // live Ethereum network
     live: {
       provider: () =>
-        new HDWalletProvider(mnemonic, `https://mainnet.infura.io/${infuraId}`),
+        new PrivateKeyProvider(
+          ethPrivateKey,
+          `https://mainnet.infura.io/${infuraId}`,
+        ),
       network_id: 1,
       // Set the gas and gasPrice very carefully.
       // If set incorrectly they can prevent deploys, or clean out your account!

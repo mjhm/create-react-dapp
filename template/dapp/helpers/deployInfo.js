@@ -26,8 +26,6 @@ const deployInfo = (deployer, contract) => {
     _.defaults(info, JSON.parse(fs.readFileSync(infoFile)));
   }
 
-  console.log('truffleConfig', truffleConfig.networks);
-
   const networkLocation = Object.assign(
     {},
     truffleConfig.networks[networkName],
