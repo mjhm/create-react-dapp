@@ -34,6 +34,7 @@ This should launch a browser at URL `http://localhost:3000`. If it doesn't, try 
   * [Ganache and Ganache UI](#ganache-and-ganache-ui)
   * [Rinkeby and Other Public TestNets](#rinkeby-and-other-public-testnets)
   * [Ethereum Main Network](#ethereum-main-network)
+- [Testing](#testing)
 - [Troubleshooting](#troubleshooting)
   * [Installation](#installation)
   * [Migration](#migration)
