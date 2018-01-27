@@ -22,15 +22,17 @@ npm run migrate
 npm start
 ```
 
+This should launch a browser at URL `http://localhost:3000`. If it doesn't, try navigating there directly.
+
 # Contents
 
 <!-- toc -->
 
 - [Features](#features)
-- [Depolyment Options](#depolyment-options)
+- [Deployment Options](#deployment-options)
   * [Ganache and Ganache UI](#ganache-and-ganache-ui)
-  * [Rinkeby and Other TestNets](#rinkeby-and-other-testnets)
-  * [Ethereum MainNet](#ethereum-mainnet)
+  * [Rinkeby and Other Public TestNets](#rinkeby-and-other-public-testnets)
+  * [Ethereum Main Network](#ethereum-main-network)
 
 <!-- tocstop -->
 
@@ -39,7 +41,7 @@ npm start
 1. Uses Facebook's `create-react-app` directly, so it will always retrieve the latest React and Webpack features and best practices, with no configuation.
 2. Clear separation of concerns between the React and Ethereum programming.
 3. Uses Truffle for compilation and migration management of Ganache, Rinkeby, and MainNet configurations.
-4. Minimal self-contained installation. Doesn't require Remix, Geth, or Parity.
+4. Minimal and self-contained installation. Doesn't require Remix, Geth, or Parity.
 
 ## Deployment Options
 
@@ -57,9 +59,6 @@ The [Ganache UI](http://truffleframework.com/ganache/) gives a more visual and i
 
 ```
 npm run migrate_ganacheUI
-```
-... and in a separate shell
-```
 npm run start_ganacheUI
 ```
 
@@ -75,12 +74,9 @@ You will also need to get some test "ether" from the [Rinkeby Faucet](https://ww
 
 Next copy the account's Private Key from MetaMask. To do so click on the **▪️ ▪️ ▪️** icon to the right of the account's name, click "Export Private Key", follow the password prompt, then click on the private key to copy it to the clipboard.
 
-Now we're ready to go. 
+Now we're ready to go. (Be patient with the migration it can take a minute.)
 ```
 ETH_PK=<paste private key here> npm run migrate_rinkeby
-```
-... and in a separate shell
-```
 npm run start_rinkeby
 ```
 
@@ -97,6 +93,13 @@ The other test nets (Kovan and Ropsten) should be similar, but you will need to 
 
 ### Ethereum Main Network
 
-Once everything is tested thoroughly on Rinkeby, you'll want to deploy to the Ethereum Main Network. No scripts are included for working with the "live" network, because if you are to this point you don't need to use the scripts as training wheels.
+Once everything is tested thoroughly on Rinkeby, you'll (obviously) want to deploy to the Ethereum Main Network. No scripts are included for working with the "live" network, because if you are to this point you don't need to use the scripts as training wheels.
 
 > ⚠️ Deploying the scripts will cost you. At the time of this writing it's about $5, and each "vote" in the app costs about $0.10. However if you set your `gasPrice` too high it can cost you a lot more. So don't put your life savings into the account that you deploy from, and be careful how you set the `gas` and `gasPrice` parameters in [truffle.js](./template/dapp/truffle.js)
+
+## Troubleshooting
+
+### Installation
+
+1. Upgrade to node version >=8 and npm version >=5.2.0. The `create-react-dapp` script depends on `npx` which is included in the later versions of `npm`.
+2. Upgrade `create-react-app` to the latest version.  Or even better uninstall it. You probably don't need it anymore since `npx create-react-app ...` loads and uses the most recent version of `create-react-app` on the fly.
