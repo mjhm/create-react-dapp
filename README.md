@@ -108,6 +108,10 @@ Once everything is tested thoroughly on Rinkeby, you'll (obviously) want to depl
 
 > ⚠️ Deploying the contracts will cost you. At the time of this writing it's about $5, and each "vote" in the app costs about $0.10. However if you set your `gasPrice` too high it can cost you a lot more. So don't put your life savings into the account that you deploy from, and be careful how you set the `gas` and `gasPrice` parameters in [truffle.js](./template/dapp/truffle.js)
 
+## Testing
+
+mea máxima culpa -- coming soon
+
 ## Troubleshooting
 
 ### Installation
