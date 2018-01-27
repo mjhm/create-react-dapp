@@ -1,4 +1,4 @@
-# Create React dApp -- An Ethereum App Bootstrapper
+# Create React dApp
 
 ## Quick Start
 
