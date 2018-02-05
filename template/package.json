@@ -4,16 +4,19 @@
     "npm": ">=5.2"
   },
   "license": "MIT",
+  "//": [
+    "jquery and popper.js are only added to prevent reactstrap from whining during npm/yarn installs"
+  ],
   "dependencies": {
     "bluebird": "^3.5.1",
     "bootstrap": "^4.0.0",
     "ganache-cli": "^6.0.3",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.5",
     "mkdirp": "^0.5.1",
     "react": "^16.1.0",
     "react-dom": "^16.1.0",
     "react-scripts": "1.1.0",
-    "reactstrap": "^5.0.0-alpha.4",
+    "reactstrap": "5.0.0-beta",
     "solc": "^0.4.19",
     "truffle-privatekey-provider": "^0.0.4",
     "web3": "^0.20.4"
@@ -21,14 +24,18 @@
   "devDependencies": {
     "babel-eslint": "^8.1.2",
     "babel-preset-stage-2": "^6.24.1",
-    "eslint": "^4.14.0",
+    "eslint": "^4.17.0",
     "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-prettier": "^2.4.0",
-    "eslint-plugin-react": "^7.5.1",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-react": "^7.6.1",
+    "jquery": "^3.3.1",
+    "npm-run-all": "^4.1.2",
+    "popper.js": "^1.13.0",
     "prettier": "^1.9.2"
   },
   "scripts": {
     "ganache": "ganache-cli",
+    "ganache_quiet": "ganache-cli >/dev/null",
     "migrate": "cd dapp && truffle migrate --reset --compile-all",
     "migrate_ganacheUI": "cd dapp && truffle migrate --network ganacheUI --reset --compile-all",
     "migrate_rinkeby": "cd dapp && truffle migrate --network rinkeby",
@@ -39,7 +46,8 @@
     "kill_rinkeby": "truffle exec ./helpers/killAll.js --network rinkeby",
     "build": "react-scripts build",
     "test_components": "react-scripts test --env=jsdom src/components",
-    "test_contracts": "react-scripts test --env=node contracts",
+    "truffle_test": "cd dapp && truffle test",
+    "test_contracts": "npm-run-all -p -r ganache_quiet truffle_test 2>/dev/null",
     "test": "CI=true yarn run test_components && CI=true yarn run test_contracts",
     "eject": "react-scripts eject"
   }

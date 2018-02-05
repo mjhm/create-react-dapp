@@ -19,7 +19,7 @@ module.exports = {
       port: 9545,
       network_id: '*',
     },
-    // Ganach UI
+    // Ganache UI
     ganacheUI: {
       host: '127.0.0.1',
       port: 7545,
