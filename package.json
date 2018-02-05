@@ -1,6 +1,6 @@
 {
   "name": "create-react-dapp",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "An Ethereum template layered upon create-react-app",
   "keywords": [
     "ethereum",
