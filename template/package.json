@@ -35,7 +35,7 @@
   },
   "scripts": {
     "ganache": "ganache-cli",
-    "ganache_quiet": "ganache-cli >/dev/null",
+    "ganache_quiet": "echo if ganache_quiet fails to start you may have a ganache process already running on port 8545 && (ganache-cli >/dev/null)",
     "migrate": "cd dapp && truffle migrate --reset --compile-all",
     "migrate_ganacheUI": "cd dapp && truffle migrate --network ganacheUI --reset --compile-all",
     "migrate_rinkeby": "cd dapp && truffle migrate --network rinkeby",
