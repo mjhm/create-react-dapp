@@ -8,6 +8,7 @@
     "jquery and popper.js are only added to prevent reactstrap from whining during npm/yarn installs"
   ],
   "dependencies": {
+    "axios": "^0.17.1",
     "bluebird": "^3.5.1",
     "bootstrap": "^4.0.0",
     "ganache-cli": "^6.0.3",

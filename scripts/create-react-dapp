@@ -56,3 +56,15 @@ fi
 
 echo '********** DONE INSTALLING DEPENDENCIES ******'
 echo '**********************************************'
+echo
+echo '********** QUICK START NEXT STEPS ************'
+echo
+echo 'cd ' $APP_NAME
+echo 'npm run ganache'
+echo
+echo '*** (IN A SEPARATE SHELL RUN) ***'
+echo
+echo 'npm run migrate'
+echo 'npm start'
+echo
+echo '********** Happy Dapping! ********************'

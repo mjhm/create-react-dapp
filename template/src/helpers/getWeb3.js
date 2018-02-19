@@ -1,16 +1,25 @@
 /* global web3 */
 
-// NOTE: All this will be much cleaner with web3 1.x and async/await patterns.
+// getWeb3 -- wraps the Web3 constructor and does error checking for common problems.
+// Please log an issue if there are error cases that are missed,
+// or if any of "Perhaps ..." hints that inaccurate or unclear.
+
+// NOTE: All this will become much cleaner with web3 1.x and async/await patterns.
 
 import Web3 from 'web3';
 
 const checkAccounts = (localWeb3, callback) => {
   localWeb3.eth.getAccounts((err, accounts) => {
     if (err) {
-      return callback(err);
+      const newErr = new Error(
+        `Failed to retrieve accounts with error -- ${
+          err.message
+        } -- Perhaps you're trying to connect to a test network that isn't running.`,
+      );
+      return callback(newErr);
     }
     if (accounts.length === 0) {
-      return callback(new Error('No accounts, perhaps MetaMask is locked'));
+      return callback(new Error('No accounts. Perhaps MetaMask is locked'));
     }
     return callback(null, accounts[0]);
   });
@@ -36,7 +45,8 @@ const checkNetworkId = (localWeb3, requestedNetId, callback) => {
   });
 };
 
-const resolver = (resolve, reject, networkLocation) => {
+const web3LocationResolver = (resolve, reject, networkLocation) => {
+  // This wraps the Web3 constructor and does the actual error checking for common problems.
   let localWeb3;
 
   // Use HttpProvider if the requested networkLocation has host and port
@@ -49,7 +59,7 @@ const resolver = (resolve, reject, networkLocation) => {
   } else if (typeof web3 === 'undefined') {
     return reject(
       new Error(
-        "web3 isn't defined, perhaps MetaMask is disabled or not installed",
+        "web3 isn't defined. Perhaps MetaMask is disabled or not installed",
       ),
     );
   } else {
@@ -72,14 +82,15 @@ const resolver = (resolve, reject, networkLocation) => {
 };
 
 const getWeb3 = networkLocation => {
-  // The resolver needs to be called after the DOM is ready to give MetaMask enough
-  // time to inject "web3".
+  // This is just a wrapper around web3LocationResolver. The wrapper assures
+  // that web3LocationResolver is called after the DOM is ready, so as to
+  // give MetaMask enough time to inject "web3".
   return new Promise((resolve, reject) => {
     if (document.readyState === 'complete') {
-      resolver(resolve, reject, networkLocation);
+      web3LocationResolver(resolve, reject, networkLocation);
     } else {
       window.addEventListener('load', () => {
-        resolver(resolve, reject, networkLocation);
+        web3LocationResolver(resolve, reject, networkLocation);
       });
     }
   });

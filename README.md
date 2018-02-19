@@ -113,7 +113,13 @@ Once everything is tested thoroughly on Rinkeby, you'll (obviously) want to depl
 
 ## Testing
 
-mea máxima culpa -- coming soon
+A few sample tests are included on both sides of the app. The `npm` test commands are.
+
+```
+npm run test_components // runs the standard create-react-app Jest tests for the front end.
+npm run test_contracts  // launches a silent ganache testnet then runs "truffle test"
+npm test                // runs both
+```
 
 ## Troubleshooting
 
@@ -130,6 +136,10 @@ Error encountered, bailing. Network state unknown. Review successful transaction
 Error: The contract code couldn't be stored, please check your gas amount.
 ...
 ```
+
+### Any Other Problems
+
+Please file an issue: https://github.com/mjhm/create-react-dapp/issues
 
 ## Acknowledgements
 
