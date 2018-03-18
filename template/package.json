@@ -6,23 +6,23 @@
   "license": "MIT",
   "//": [
     "jquery and popper.js are only added to prevent reactstrap from whining during npm/yarn installs",
-    "reactstrap is locked at 5.0.0-beta until it gets out of beta",
+    "reactstrap is locked at 5.0.0-beta.2 until it gets out of beta",
     "web3 is locked at '0.20.x' until 1.0 gets out of beta and it's well supported by MetaMask"
   ],
   "dependencies": {
     "axios": "^0.18.0",
     "bluebird": "^3.5.1",
     "bootstrap": "^4.0.0",
-    "ganache-cli": "^6.0.3",
+    "ganache-cli": "^6.1.0",
     "lodash": "^4.17.5",
     "mkdirp": "^0.5.1",
     "react": "^16.1.0",
     "react-dom": "^16.1.0",
     "react-scripts": "^1.1.1",
-    "reactstrap": "5.0.0-beta",
+    "reactstrap": "5.0.0-beta.2",
     "solc": "^0.4.19",
     "truffle-privatekey-provider": "^0.0.5",
-    "web3": "^0.20.5"
+    "web3": "^0.20.6"
   },
   "devDependencies": {
     "babel-eslint": "^8.1.2",
