@@ -16,7 +16,7 @@ npm run ganache
 
 ### Compile and deploy contracts, then launch the app.
 
-In a separate shell
+In a separate shell (from the same `./mydapp` folder)
 
 ```
 npm run migrate

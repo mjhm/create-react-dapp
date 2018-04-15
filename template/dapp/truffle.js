@@ -33,7 +33,7 @@ module.exports = {
           `https://rinkeby.infura.io/${infuraId}`,
         ),
       network_id: 4,
-      gas: 500000,
+      gas: 1000000,
       gasPrice: 4000000000,
     },
     // live Ethereum network
@@ -46,7 +46,7 @@ module.exports = {
       network_id: 1,
       // Set the gas and gasPrice very carefully.
       // If set incorrectly they can prevent deploys, or clean out your account!
-      gas: 500000,
+      gas: 1000000,
       gasPrice: 4000000000,
     },
   },
