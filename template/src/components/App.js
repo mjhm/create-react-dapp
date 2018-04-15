@@ -1,6 +1,6 @@
 // @flow
 
-import React from 'react';
+import * as React from 'react';
 import { Container } from 'reactstrap';
 import VotingTable from './VotingTable';
 import fetchContracts from '../helpers/fetchContracts';
@@ -9,13 +9,15 @@ import reactLogo from '../reactLogo.svg';
 import ethereumLogo from '../ethereumLogo.svg';
 import './App.css';
 
-class App extends React.Component {
-  state: {
-    votePending: boolean,
-    votes: any,
-    poll: any,
-  };
+type Props = { network: string };
 
+type State = {
+  votePending: boolean,
+  votes: any,
+  poll: any,
+};
+
+class App extends React.Component<Props, State> {
   constructor(props: { network: string }) {
     super(props);
     this.state = {

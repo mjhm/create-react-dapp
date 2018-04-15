@@ -1,6 +1,6 @@
 // @flow
 
-import React from 'react';
+import * as React from 'react';
 import { Table, Button, Progress } from 'reactstrap';
 
 const CandidateRow = ({ name, votes, votePending, onClick }) => (
