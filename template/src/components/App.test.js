@@ -2,7 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Promise from 'bluebird';
-import App from './app';
+import App from './App.js';
 
 const candidateVotes = {
   Rami: 4,
