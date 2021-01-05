@@ -8,7 +8,7 @@
     "web3 is locked at '0.20.x' until 1.0 gets out of beta and is well supported by MetaMask"
   ],
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "bluebird": "^3.5.1",
     "bootstrap": "^4.1.1",
     "ganache-cli": "^6.1.0",
